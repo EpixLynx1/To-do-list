@@ -1,11 +1,21 @@
-function addTask() {
-  let input = document.getElementById("taskInput");
-  let task = input.value;
+const input = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const list = document.getElementById("taskList");
 
-  let li = document.createElement("li");
-  li.textContent = task;
+addBtn.addEventListener("click", function () {
+  const taskText = input.value;
 
-  document.getElementById("taskList").appendChild(li);
+  if (taskText === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = taskText;
+
+  // click to delete
+  li.addEventListener("click", function () {
+    li.remove();
+  });
+
+  list.appendChild(li);
 
   input.value = "";
-}
+});
